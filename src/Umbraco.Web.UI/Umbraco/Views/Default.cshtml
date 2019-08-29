@@ -44,7 +44,11 @@
         new BasicPath("Umbraco", IOHelper.ResolveUrl(SystemDirectories.Umbraco)))
 </head>
 <body ng-class="{'touch':touchDevice, 'emptySection':emptySection, 'umb-drawer-is-visible':drawer.show, 'umb-tour-is-visible': tour.show, 'tabbing-active':tabbingActive}" ng-controller="Umbraco.MainController" id="umbracoMainPageBody">
-
+<div class="skip-links">
+    <a href="#header" class="skip">Skip to header</a>
+    <a href="#navigation" class="skip">Skip to navigation</a>
+    <a href="#content" class="skip">Skip to content</a>
+</div>
     <noscript>
         <div style="margin: 10px;">
             <h3><img src="assets/img/application/logo.png" alt="Umbraco logo" style="vertical-align: text-bottom;" /> Umbraco</h3>
@@ -56,25 +60,27 @@
     <div ng-hide="!authenticated" ng-cloak>
 
         <div style="display: none;" id="mainwrapper" class="clearfix">
-
-            <umb-app-header></umb-app-header>
-
+            <div  id="header" role="header">
+                <umb-app-header></umb-app-header>
+            </div>
             <div class="umb-app-content">
 
-                <umb-navigation></umb-navigation>
+                <div id="navigation" role="navigation">
+                    <umb-navigation></umb-navigation>
+                </div>
+                <div id="content" role="content">
+                    <section id="contentwrapper">
 
-                <section id="contentwrapper">
+                        <div id="contentcolumn">
 
-                    <div id="contentcolumn">
+                            <div class="umb-editor" ng-view></div>
+                            <div class="umb-editor__overlay" ng-if="infiniteMode"></div>
 
-                        <div class="umb-editor" ng-view></div>
-                        <div class="umb-editor__overlay" ng-if="infiniteMode"></div>
+                            <umb-editors></umb-editors>
+                        </div>
 
-                        <umb-editors></umb-editors>
-                    </div>
-
-                </section>
-
+                    </section>
+                </div>
             </div>
 
             <umb-tour
