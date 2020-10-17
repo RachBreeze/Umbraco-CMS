@@ -112,6 +112,10 @@ angular.module("umbraco").controller("Umbraco.PrevalueEditors.RteController",
                     icon.name = "icon-settings-alt";
                     icon.isCustom = true;
                     break;
+                case "language":
+                    icon.name = "icon-globe";
+                    icon.isCustom = true;
+                    break;
                 default:
                     icon.name = alias;
                     icon.isCustom = false;

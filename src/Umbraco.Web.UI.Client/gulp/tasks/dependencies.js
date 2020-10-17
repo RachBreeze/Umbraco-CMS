@@ -251,6 +251,25 @@ function dependencies() {
             "base": "./node_modules/wicg-inert"
         }
     ];
+	
+	const tinyMceModules = [
+        {
+            "name": "tinymce-language-selector",
+            "src": [
+                "./node_modules/@edx/tinymce-language-selector/tinymce-language-selector/**"
+            ],
+			"dst": "/tinymce/plugins/",
+            "base": "./node_modules/@edx/tinymce-language-selector"
+        }
+    ];
+	
+	tinyMceModules.forEach(module => {
+        stream.add(
+            gulp.src(module.src,
+                { base: module.base, allowEmpty: true })
+                .pipe(gulp.dest(config.root + config.targets.lib + module.dst + module.name))
+        );
+    });
 
     // add streams for node modules
     nodeModules.forEach(module => {
