@@ -249,9 +249,25 @@ function dependencies() {
                 "./node_modules/wicg-inert/dist/inert.min.js.map"
             ],
             "base": "./node_modules/wicg-inert"
+        },
+        {
+            "name": "tinymce-a11y-checker",
+            "src": [
+                "./node_modules/tinymce-a11y-checker/lib/**"
+            ],
+            "base": "./node_modules/wicg-inert"
         }
     ];
-
+	
+	const tinyMceModules = [
+		{
+			"name": "tinymce-a11y-checker",
+			"src": [
+				"./node_modules/tinymce-a11y-checker/lib/**"
+			],
+			"base": "./node_modules/tinymce-a11y-checker"
+		}
+    ];
     // add streams for node modules
     nodeModules.forEach(module => {
         stream.add(
@@ -261,6 +277,14 @@ function dependencies() {
         );
     });
 
+    tinyMceModules.forEach(module => {
+        stream.add(
+            gulp.src(module.src,
+                { base: module.base, allowEmpty: true })
+                .pipe(gulp.dest(config.root + config.targets.lib + "/tinymce/plugins/" + module.name))
+        );
+    });
+	
     //copy over libs which are not on npm (/lib)
     stream.add(
         gulp.src(config.sources.globs.lib, { allowEmpty: true })

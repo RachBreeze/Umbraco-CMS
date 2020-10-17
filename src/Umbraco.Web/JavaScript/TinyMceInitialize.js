@@ -13,5 +13,6 @@
     'lib/tinymce/plugins/tabfocus/plugin.min.js',
     'lib/tinymce/plugins/searchreplace/plugin.min.js',
     'lib/tinymce/plugins/fullscreen/plugin.min.js',
-    'lib/tinymce/plugins/noneditable/plugin.min.js'
+    'lib/tinymce/plugins/noneditable/plugin.min.js',
+    'lib/tinymce/plugins/tinymce-a11y-checker/plugin.min.js'
 ]
