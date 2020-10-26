@@ -65,6 +65,7 @@
                     vm.userGroup = userGroup;
                     setSectionIcon(vm.userGroup.sections);
                     makeBreadcrumbs();
+                    $scope.$root.$emit("$setAccessibleHeader", true, "createGroup", false, "", "", true);
                     vm.loading = false;
                 });
             } else {
@@ -74,6 +75,7 @@
                     formatGranularPermissionSelection();
                     setSectionIcon(vm.userGroup.sections);
                     makeBreadcrumbs();
+                    $scope.$root.$emit("$setAccessibleHeader", false, "createGroup", false, vm.userGroup.name, "", true);
                     vm.loading = false;
                 });
             }

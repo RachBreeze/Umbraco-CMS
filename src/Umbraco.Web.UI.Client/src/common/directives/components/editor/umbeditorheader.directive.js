@@ -224,7 +224,6 @@ Use this directive to construct a header inside the main editor window.
 
             // need to call localizationService service outside of routine to set a11y due to promise requirements
             if (editorState.current) {
-                //to do make work for user create/edit
                 // to do make it work for user group create/ edit
                 // to make it work for language edit/create
                 setAccessibilityForEditorState();
@@ -354,10 +353,11 @@ Use this directive to construct a header inside the main editor window.
             }
 
             function SetPageTitle(title) {
-                    scope.$emit("$changeTitle", title);
+                scope.$emit("$changeTitle", title);
             }
 
             $rootScope.$on('$setAccessibleHeader', function (event, isNew, editorFor, nameLocked, name, contentTypeName, setTitle) {
+                alert('hello');
                 setAccessibilityHeaderDirective(isNew, editorFor, nameLocked, name, contentTypeName, setTitle);
             });
         }
